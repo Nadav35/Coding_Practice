@@ -24,5 +24,34 @@ Do as directed in question. For each element in the array, we find the maximum l
     * Iterate from the current element to the beginning of array, updating:
       * ```max_left = max(max_left, height[j])```
     * Iterate from the current element to the end of array, updating:
-      * ```max_right = max(max_left, height[j])```
-    * add ```min(max_left, max_right - height[i])``` to ans
+      * ```max_right = max(max_right, height[j])```
+    * add ```min(max_left, max_right) - height[i]``` to ans
+
+```javascript
+let trap = function(height) {
+    let ans = 0;
+    let size = height.length;
+    for (let i = 1; i < size - 1; i++) {
+        let maxLeft = 0;
+        let maxRight = 0;
+        // search the left size for max bar size
+        for (let j = i; j >= 0; j--) {
+            maxLeft = Math.max(maxLeft, height[j]);
+        }
+        
+        // search the right size for max bar size
+        for (let j = i; j < size; j++) {
+            maxRight = Math.max(maxRight, height[j]);
+        }
+        ans += Math.min(maxLeft, maxRight) - height[i];
+    }
+    return ans;
+};
+```
+
+# **Approach 2: Dynamic Programmin**
+## **Intuition**
+
+In brute force, we iterate over the left and right parts again and again just to find the highest bar size upto that index. But, this could be stored. Voila, dynamic programming.
+
+The concept is illustrated as shown:
