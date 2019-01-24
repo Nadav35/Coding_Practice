@@ -55,3 +55,5 @@ let trap = function(height) {
 In brute force, we iterate over the left and right parts again and again just to find the highest bar size upto that index. But, this could be stored. Voila, dynamic programming.
 
 The concept is illustrated as shown:
+
+![alt-text](https://github.com/Nadav35/Coding_Practice/blob/master/assets/trapping_rain_water.png "image 2")
