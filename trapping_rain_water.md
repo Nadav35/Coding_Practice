@@ -57,3 +57,31 @@ In brute force, we iterate over the left and right parts again and again just to
 The concept is illustrated as shown:
 
 ![alt-text](https://github.com/Nadav35/Coding_Practice/blob/master/assets/trapping_rain_water.png "image 2")
+
+## **Algorithm**
+  * Find maximum height of bar from the left end upto an index i in the array leftMax
+  * Find maximum height of bar from the right end upto an index i in the array rightMax
+  * Iterate over the \text{height}height array and update ans:
+    * add ```min(maxLeft[i], maxRight[i]) - height[i]``` to ans
+
+```javascript
+  let trap = function(height) {
+    let ans = 0;
+    let size = height.length;
+    let leftMax = [];
+    let rightMax = [];
+    leftMax[0] = height[0];
+    for (let i = 1; i < size; i++) {
+        leftMax[i] = Math.max(height[i], leftMax[i - 1]);
+    }
+    rightMax[size - 1] = height[size - 1];
+    for (let i = size - 2; i >= 0; i--) {
+        rightMax[i] = Math.max(height[i], rightMax[i + 1]);
+    }
+    for (let i = 1; i < size - 1; i++) {
+        ans += Math.min(leftMax[i], rightMax[i]) - height[i];
+    }
+    return ans;
+    
+};
+```
