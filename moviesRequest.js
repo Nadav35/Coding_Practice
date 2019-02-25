@@ -1,8 +1,27 @@
 
-function fetchData(substr) {
+async function fetchData(substr) {
   let pageNum = 1;
   let movieArray = [];
   let url = 'https://jsonmock.hackerrank.com/api/movies/search/?Title=' + substr + "&page=" + pageNum;
+  let fetchUrl = await fetch(url);
+  let parsedRes = await fetchUrl.json();
+  
+  let numPages = parsedRes.total_pages;
+  let movies = parsedRes.data;
+  movies.forEach(movie => movieArray.push(movie.Title));
+  for (let i = 2; i <= numPages; i++) {
+    let newUrl = 'https://jsonmock.hackerrank.com/api/movies/search/?Title=' + substr + "&page=" + i;
+    fetchUrl = await fetch(newUrl);
+    parsedRes = await fetchUrl.json();
+    newMovies = parsedRes.data;
+    newMovies.forEach(movie => movieArray.push(movie.Title));
+
+  }
+  console.log(movieArray.sort());
+  
+  
+  
+  
   // fetch(url)
   //   .then(res => {
   //     return res.json();
