@@ -2,6 +2,8 @@
 
 // ==> [1, 3, 5, 23, 23, 33, 33]
 
+// [3, 1, 15, 3, 7, -5, 20, 30] ==> 55
+
 function largestNonContingentSum(array) {
   let retArr = [];
   if (array[0] > array[1]) {
@@ -23,5 +25,5 @@ function largestNonContingentSum(array) {
   console.log(retArr.pop());
 }
 
-largestNonContingentSum([1, 3, 4, 20, -7, 10, -1]);
+largestNonContingentSum([3, 1, 15, 3, 7, -5, 20, 30]);
 
