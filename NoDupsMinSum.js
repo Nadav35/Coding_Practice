@@ -11,10 +11,10 @@
 function removeDups(array) {
   // if (array.length === 1) return array;
   array = array.sort();
-  // [1,1,2,3,3,5,5,8] => [1, 2, 3, 4, ]
-  // cur: 4
-  // [1,2,2,2,4] => [1,2,3,4,5]
-  // cur: 4
+  // [1,1,2,3,3,5,5,8] => [1, 2, 3, 4, 5, 6, 7,8]
+  // cur: 8
+  
+  
   let cur = array[0];
   for (let i = 1; i < array.length; i++ ) {
     if (cur >= array[i]) {
